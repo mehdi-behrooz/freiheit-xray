@@ -1,0 +1,54 @@
+{
+    "inbounds": [
+        {
+            "tag": "reality",
+            "listen": "0.0.0.0",
+            "port": 1083,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "${USER_ID_DIRECT}",
+                        "level": 0,
+                        "email": "direct@example.com",
+                        "flow": "xtls-rprx-vision"
+                    },
+                    {
+                        "id": "${USER_ID_PROXY}",
+                        "level": 0,
+                        "email": "proxy@example.com",
+                        "flow": "xtls-rprx-vision"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                    "dest": "${REALITY_SNI}:443",
+                    "serverNames": [
+                        "${REALITY_SNI}"
+                    ],
+                    "privateKey": "${REALITY_PRIVATE_KEY}",
+                    "publicKey": "${REALITY_PUBLIC_KEY}",
+                    "shortIds": [
+                        "",
+                        "0123456789"
+                    ],
+                    "shortId": "",
+                    "fingerprint": "chrome",
+                    "rejectUnknownSni": true
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ]
+            }
+        }
+    ]
+}

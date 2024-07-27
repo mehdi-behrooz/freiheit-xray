@@ -1,0 +1,22 @@
+{
+    "outbounds": [
+        {
+            "tag": "proxy-shadowsocks",
+            "protocol": "shadowsocks",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "${PROXY_ADDRESS}",
+                        "port": ${PROXY_PORT},
+                        "method": "${PROXY_ENCRYPTION}",
+                        "password": "${PROXY_PASSWORD}"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none"
+            }
+        }
+    ]
+}

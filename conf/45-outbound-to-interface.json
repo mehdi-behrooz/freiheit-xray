@@ -1,0 +1,14 @@
+{
+    "outbounds": [
+        {
+            "tag": "proxy-interface",
+            "protocol": "freedom",
+            "streamSettings": {
+                "sockopt": {
+                    "tcpFastOpen": true,
+                    "interface": "${PROXY_INTERFACE}"
+                }
+            }
+        }
+    ]
+}

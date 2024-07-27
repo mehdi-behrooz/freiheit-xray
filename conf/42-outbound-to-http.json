@@ -1,0 +1,20 @@
+{
+    "outbounds": [
+        {
+            "tag": "proxy-http",
+            "protocol": "http",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "${PROXY_ADDRESS}",
+                        "port": ${PROXY_PORT}
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none"
+            }
+        }
+    ]
+}

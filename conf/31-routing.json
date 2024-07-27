@@ -1,0 +1,20 @@
+{
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+            {
+                "type": "field",
+                "port": "0-65535",
+                "user": [
+                    "proxy@example.com"
+                ],
+                "outboundTag": "${PROXY_MODEL}"
+            },
+            {
+                "type": "field",
+                "port": "0-65535",
+                "outboundTag": "freedom"
+            }
+        ]
+    }
+}
