@@ -12,8 +12,9 @@ do
     envsubst < $f | sponge $f
     if [ "$LOG_LEVEL" == "debug" ]
     then
-        echo "$f:"
-        cat $f
+        echo -e "$f: \n"
+        cat $f | sed 's/^/\t/'
+        echo
     fi
 done
 
