@@ -35,3 +35,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/bin/xray", "run", "-confdir", "/etc/xray.d/"]
 
 EXPOSE 80
+
+HEALTHCHECK CMD nc -z localhost 80 || exit 1
