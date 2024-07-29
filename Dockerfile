@@ -3,9 +3,8 @@
 FROM teddysun/xray
 
 RUN apk update
-RUN apk add gettext
-RUN apk add coreutils
-RUN apk add moreutils
+RUN apk add gettext        # for: envsubst
+RUN apk add moreutils      # for: sponge
 
 COPY ./conf/ /etc/xray.d/
 COPY --chmod=755 ./entrypoint.sh /
