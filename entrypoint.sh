@@ -3,7 +3,7 @@
 case $PROTOCOL in
     tcp) PORT=1081 ;;
     ws) PORT=1082 ;;
-    xray) PORT=1083 ;;
+    reality) PORT=1083 ;;
 esac
 export PORT
 
