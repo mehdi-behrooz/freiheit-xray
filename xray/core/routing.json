@@ -6,9 +6,9 @@
                 "type": "field",
                 "port": "0-65535",
                 "user": [
-                    "proxy@example.com"
+                    "warp@example.com"
                 ],
-                "outboundTag": "proxy-socks"
+                "outboundTag": "warp-socks"
             },
             {
                 "type": "field",

@@ -1,13 +1,13 @@
 {
     "outbounds": [
         {
-            "tag": "proxy-socks",
+            "tag": "warp-socks",
             "protocol": "socks",
             "settings": {
                 "servers": [
                     {
-                        "address": "${PROXY_ADDRESS}",
-                        "port": ${PROXY_PORT}
+                        "address": "${WARP_ADDRESS}",
+                        "port": ${WARP_PORT}
                     }
                 ]
             },

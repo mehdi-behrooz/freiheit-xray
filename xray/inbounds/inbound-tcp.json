@@ -13,9 +13,9 @@
                         "email": "direct@example.com"
                     },
                     {
-                        "id": "${USER_ID_PROXY}",
+                        "id": "${USER_ID_WARP}",
                         "level": 0,
-                        "email": "proxy@example.com"
+                        "email": "warp@example.com"
                     }
                 ],
                 "decryption": "none"

@@ -14,9 +14,9 @@
                         "flow": "xtls-rprx-vision"
                     },
                     {
-                        "id": "${USER_ID_PROXY}",
+                        "id": "${USER_ID_WARP}",
                         "level": 0,
-                        "email": "proxy@example.com",
+                        "email": "warp@example.com",
                         "flow": "xtls-rprx-vision"
                     }
                 ],
