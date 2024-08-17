@@ -3,37 +3,52 @@ services:
   xray-tcp:
     build: .
     container_name: xray-tcp
-    restart: unless-stopped
     environment:
       - PROTOCOL=tcp
       - LOG_LEVEL=debug
       - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
-      - USER_ID_PROXY=decade00-0000-4000-a000-000000000000
-      - PROXY_ADDRESS=warp
+      - USER_ID_WARP=decade00-0000-4000-a000-000000000000
+      - WARP_ADDRESS=warp
+      - GENERATE_DIRECT_CONFIGS=true
+      - GENERATE_TUNNEL_CONFIGS=true
+      - GENERATE_WARP_CONFIGS=true
+      - TUNNEL_IP=81.81.81.81
+
 
   xray-ws:
     build: .
     container_name: xray-ws
-    restart: unless-stopped
     environment:
       - PROTOCOL=ws
       - LOG_LEVEL=debug
       - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
-      - USER_ID_PROXY=decade00-0000-4000-a000-000000000000
-      - PROXY_ADDRESS=warp
+      - USER_ID_WARP=decade00-0000-4000-a000-000000000000
+      - WS_HOST=myhost.com
+      - WS_PATH=/xray/
+      - WARP_ADDRESS=warp
+      - GENERATE_DIRECT_CONFIGS=true
+      - GENERATE_WORKER_CONFIGS=true
+      - GENERATE_WARP_CONFIGS=true
+      - CLOUDFLARE_IP=some.website.on.cloudflare.com
+      - WORKER_SNI=myworker.cf.workers.dev
 
   xray-reality:
     build: .
     container_name: xray-reality
-    restart: unless-stopped
     environment:
       - PROTOCOL=reality
       - LOG_LEVEL=debug
       - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
-      - USER_ID_PROXY=decade00-0000-4000-a000-000000000000
-      - REALITY_PRIVATE_KEY=aAmertGRfeZ_qed965PIrhvxIC46Q3GS6jngqC-qhDE
-      - REALITY_PUBLIC_KEY=awZVJXYAHw_fqfYxwSTgcExrwKPknU5KO9z-CCPGjhs
+      - USER_ID_WARP=decade00-0000-4000-a000-000000000000
+      - REALITY_PRIVATE_KEY=${PRIVATE_KEY}
+      - REALITY_PUBLIC_KEY=${PUBLIC_KEY}
       - REALITY_SNI=example.com
-      - PROXY_ADDRESS=warp
+      - WARP_ADDRESS=warp
+      - GENERATE_IPV4_CONFIGS=false
+      - GENERATE_IPV6_CONFIGS=true
+      - GENERATE_WARP_CONFIGS=true
 
 
+networks:
+  default:
+    enable_ipv6: true
