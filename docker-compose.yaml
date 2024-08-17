@@ -1,0 +1,39 @@
+services:
+
+  xray-tcp:
+    build: .
+    container_name: xray-tcp
+    restart: unless-stopped
+    environment:
+      - PROTOCOL=tcp
+      - LOG_LEVEL=debug
+      - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
+      - USER_ID_PROXY=decade00-0000-4000-a000-000000000000
+      - PROXY_ADDRESS=warp
+
+  xray-ws:
+    build: .
+    container_name: xray-ws
+    restart: unless-stopped
+    environment:
+      - PROTOCOL=ws
+      - LOG_LEVEL=debug
+      - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
+      - USER_ID_PROXY=decade00-0000-4000-a000-000000000000
+      - PROXY_ADDRESS=warp
+
+  xray-reality:
+    build: .
+    container_name: xray-reality
+    restart: unless-stopped
+    environment:
+      - PROTOCOL=reality
+      - LOG_LEVEL=debug
+      - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
+      - USER_ID_PROXY=decade00-0000-4000-a000-000000000000
+      - REALITY_PRIVATE_KEY=aAmertGRfeZ_qed965PIrhvxIC46Q3GS6jngqC-qhDE
+      - REALITY_PUBLIC_KEY=awZVJXYAHw_fqfYxwSTgcExrwKPknU5KO9z-CCPGjhs
+      - REALITY_SNI=example.com
+      - PROXY_ADDRESS=warp
+
+
