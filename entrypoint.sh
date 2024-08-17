@@ -1,22 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
-case $PROTOCOL in
-    tcp) PORT=1081 ;;
-    ws) PORT=1082 ;;
-    reality) PORT=1083 ;;
-esac
-export PORT
+mkdir /etc/xray.d/
 
-for f in /etc/xray.d/*;
-do
-    envsubst < $f | sponge $f
-    if [ "$LOG_LEVEL" == "debug" ]
-    then
+for f in $(ls /app/xray/core/); do
+    envsubst < /app/xray/core/$f > /etc/xray.d/$f
+done
+
+envsubst < "/app/xray/inbounds/inbound-$PROTOCOL.json" > "/etc/xray.d/inbound-$PROTOCOL.json"
+
+if [ "$LOG_LEVEL" == "debug" ]; then
+    for f in /etc/xray.d/*; do
         echo -e "$f: \n"
         cat $f | sed 's/^/\t/'
         echo
-    fi
-done
+    done
+fi
 
 exec $@
 

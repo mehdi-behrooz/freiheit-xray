@@ -3,10 +3,10 @@
 FROM teddysun/xray
 
 RUN apk update
-RUN apk add gettext        # for: envsubst
-RUN apk add moreutils      # for: sponge
+RUN apk add gettext        # envsubst
+RUN apk add bash           # bash
 
-COPY ./conf/ /etc/xray.d/
+COPY ./xray/ /app/xray/
 COPY --chmod=755 ./entrypoint.sh /
 
 ENV TZ=""

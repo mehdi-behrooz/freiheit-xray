@@ -8,7 +8,7 @@
                 "user": [
                     "proxy@example.com"
                 ],
-                "outboundTag": "${PROXY_MODEL}"
+                "outboundTag": "proxy-socks"
             },
             {
                 "type": "field",
