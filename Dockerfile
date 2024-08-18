@@ -19,11 +19,7 @@ ENV TZ=""
 
 ENV LOG_LEVEL=info
 ENV PROTOCOL=tcp
-<<<<<<< Updated upstream
-ENV WEBSOCKET_PATH=/path/
-=======
 ENV WS_PATH=/path
->>>>>>> Stashed changes
 ENV WARP_ADDRESS=127.0.0.1
 ENV WARP_PORT=80
 
