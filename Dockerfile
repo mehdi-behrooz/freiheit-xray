@@ -10,7 +10,7 @@ RUN addgroup --system xray && \
     adduser --system --disabled-password xray xray
 
 COPY --from=xray --chmod=755 /usr/bin/xray /usr/bin/xray
-COPY ./xray/ /app/xray/
+COPY ./templates/ /templates/
 COPY --chmod=755 ./entrypoint.sh /usr/bin/entrypoint.sh
 COPY --chmod=755 ./generate-config.sh /usr/bin/generate-config.sh
 COPY supervisord.conf /etc/supervisor/supervisord.conf

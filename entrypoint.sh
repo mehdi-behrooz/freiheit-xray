@@ -1,11 +1,11 @@
 #!/bin/bash
 
-for f in $(ls /app/xray/core/); do
-    envsubst < /app/xray/core/$f > /etc/xray.d/$f
+for f in /templates/core/*; do
+    envsubst <"$f" >"/etc/xray.d/$(basename ${f%.tmpl})"
 done
 
-f="inbound-$PROTOCOL.json"
-envsubst < "/app/xray/inbounds/$f" > "/etc/xray.d/$f"
+envsubst <"/templates/$PROTOCOL/inbound.json.tmpl" \
+        >/etc/xray.d/inbound.json
 
 if [ $LOG_LEVEL == debug ]; then
     for f in /etc/xray.d/*; do
