@@ -15,7 +15,7 @@ COPY --chmod=755 ./entrypoint.sh /usr/bin/entrypoint.sh
 COPY --chmod=755 ./generate-config.sh /usr/bin/generate-config.sh
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 
-RUN install -d -o xray -g xray /etc/xray.d/
+RUN install -d -o xray -g xray /etc/xray/
 RUN install -d -o xray -g xray /output/
 
 ENV LOG_LEVEL=info

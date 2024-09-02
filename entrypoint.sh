@@ -1,14 +1,14 @@
 #!/bin/bash
 
 for f in /templates/core/*; do
-    envsubst <"$f" >"/etc/xray.d/$(basename ${f%.tmpl})"
+    envsubst <"$f" >"/etc/xray/$(basename ${f%.tmpl})"
 done
 
 envsubst <"/templates/$PROTOCOL/inbound.json.tmpl" \
-        >/etc/xray.d/inbound.json
+        >/etc/xray/inbound.json
 
 if [ $LOG_LEVEL == debug ]; then
-    for f in /etc/xray.d/*; do
+    for f in /etc/xray/*; do
         echo -e "$f: \n"
         cat $f | sed 's/^/\t/'
         echo
