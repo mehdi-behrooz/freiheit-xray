@@ -1,0 +1,1 @@
+vless://$user@$host:443?encryption=none&security=tls&sni=$sni&alpn=h2&fp=chrome&type=ws&host=$sni&path=$path#$label

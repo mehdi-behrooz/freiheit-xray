@@ -1,0 +1,2 @@
+vless://$user@$host:443?encryption=none&flow=xtls-rprx-vision&security
+=reality&sni=$sni&alpn=http%2F1.1&fp=chrome&pbk=$public_key&type=tcp&headerType=none#$label
