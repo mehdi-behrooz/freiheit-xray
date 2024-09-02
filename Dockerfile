@@ -1,10 +1,12 @@
 # syntax=docker/dockerfile:1
 
-FROM teddysun/xray:1.8.23
+FROM teddysun/xray:1.8.23 AS xray
+FROM alpine:3
 
-RUN apk update \ &&
+RUN apk update && \
     apk add bash curl jq supervisor gettext-envsubst
 
+COPY --from=xray --chmod=755 /usr/bin/xray /usr/bin/xray
 COPY ./xray/ /app/xray/
 COPY --chmod=755 ./entrypoint.sh /usr/bin/entrypoint.sh
 COPY --chmod=755 ./generate-config.sh /usr/bin/generate-config.sh
@@ -12,7 +14,6 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 RUN mkdir /etc/xray.d/
 RUN mkdir /output/
 
-ENV TZ=""
 ENV LOG_LEVEL=info
 ENV PROTOCOL=tcp
 ENV WS_PATH=/path
