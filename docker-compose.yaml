@@ -1,5 +1,4 @@
 services:
-
   xray-tcp:
     build: .
     container_name: xray-tcp
@@ -13,7 +12,6 @@ services:
       - GENERATE_TUNNEL_CONFIGS=true
       - GENERATE_WARP_CONFIGS=true
       - TUNNEL_IP=81.81.81.81
-
 
   xray-ws:
     build: .
@@ -47,7 +45,6 @@ services:
       - GENERATE_IPV4_CONFIGS=false
       - GENERATE_IPV6_CONFIGS=true
       - GENERATE_WARP_CONFIGS=true
-
 
 networks:
   default:
