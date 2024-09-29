@@ -7,7 +7,7 @@ RUN apk update && \
     apk add bash curl jq supervisor gettext-envsubst
 
 RUN addgroup --system xray && \
-    adduser --system --disabled-password xray xray
+    adduser --system --disabled-password xray --ingroup xray
 
 COPY --from=xray --chmod=755 /usr/bin/xray /usr/bin/xray
 COPY ./templates/ /templates/
@@ -32,6 +32,7 @@ ENV GENERATE_IPV6_CONFIGS=true
 ENV GENERATE_WARP_CONFIGS=true
 
 USER xray
+WORKDIR /home/xray/
 
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
