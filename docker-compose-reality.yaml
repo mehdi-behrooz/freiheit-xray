@@ -1,0 +1,39 @@
+services:
+  xray-reality:
+    build: .
+    container_name: xray-reality
+    ports:
+      - 443:80
+    environment:
+      - PROTOCOL=reality
+      - LOG_LEVEL=debug
+      - USER_ID_DIRECT=facade00-0000-4000-a000-000000000000
+      - USER_ID_WARP=decade00-0000-4000-a000-000000000000
+      - REALITY_PRIVATE_KEY=${XRAY_REALITY_PRIVATE_KEY}
+      - REALITY_PUBLIC_KEY=${XRAY_REALITY_PUBLIC_KEY}
+      - REALITY_SNI=expat.com
+      - WARP_ADDRESS=warp
+      - GENERATE_IPV4_CONFIGS=true
+      - GENERATE_IPV6_CONFIGS=true
+      - GENERATE_WARP_CONFIGS=true
+
+  xrayng-reality:
+    image: ghcr.io/mehdi-behrooz/freiheit-xrayng:latest
+    container_name: xray-reality-tester
+    depends_on:
+      - xray-reality
+    environment:
+      - SUBSCRIPTION_URL=http://xray-reality:81/
+      - ASSERT_COUNT=4
+      - INDEX_TO_CHECK=1,3
+      - PERIOD_IN_MINUTES=1
+
+  debugger:
+    image: ghcr.io/mehdi-behrooz/docker-debugger:latest
+    container_name: debugger
+    stdin_open: true
+    tty: true
+
+networks:
+  default:
+    enable_ipv6: true
