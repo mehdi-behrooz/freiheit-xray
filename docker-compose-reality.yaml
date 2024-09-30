@@ -16,6 +16,7 @@ services:
       - GENERATE_IPV4_CONFIGS=true
       - GENERATE_IPV6_CONFIGS=true
       - GENERATE_WARP_CONFIGS=true
+      - CONFIGS_IPV4_REPLACEMENT=four.mydomain.com
 
   xrayng-reality:
     image: ghcr.io/mehdi-behrooz/freiheit-xrayng:latest
@@ -25,7 +26,7 @@ services:
     environment:
       - SUBSCRIPTION_URL=http://xray-reality:81/
       - ASSERT_COUNT=4
-      - INDEX_TO_CHECK=1,3
+      - INDEX_TO_CHECK=3
       - PERIOD_IN_MINUTES=1
 
   debugger:

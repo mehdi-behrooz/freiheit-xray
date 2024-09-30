@@ -15,4 +15,6 @@ xray:
     - REALITY_SNI=some-domain.com
     - WARP_ADDRESS=127.0.0.1
     - WARP_PORT=1080
+    - CONFIGS_IPV4_REPLACEMENT=ip4.mydomain.com
+    - CONFIGS_IPV6_REPLACEMENT=ip6.mydomain.com
 ```
