@@ -29,8 +29,6 @@ services:
   debugger:
     image: ghcr.io/mehdi-behrooz/docker-debugger:latest
     container_name: debugger
-    stdin_open: true
-    tty: true
 
 networks:
   default:
