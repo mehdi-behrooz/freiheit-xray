@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VALID_IPV6_REGEX="^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}$"
+
 encode() {
     printf '%s' "$*" | jq -sRr '@uri'
 }
@@ -42,9 +44,13 @@ generate_reality() {
     envsubst <"$uri"
 }
 
-ipv4=$(curl -s4 ip.sb)
-ipv6=$(curl -s6 ip.sb)
-if [[ -n $ipv6 ]]; then ipv6="[$ipv6]"; fi
+ipv4="${CONFIGS_IPV4_REPLACEMENT:-$(curl -s4 ip.sb)}"
+ipv6="${CONFIGS_IPV6_REPLACEMENT:-$(curl -s6 ip.sb)}"
+
+if [[ "$ipv6" =~ $VALID_IPV6_REGEX ]]; then
+    ipv6="[$ipv6]"
+fi
+
 ip=${ipv4:-$ipv6}
 
 uri="/templates/$PROTOCOL/uri"
