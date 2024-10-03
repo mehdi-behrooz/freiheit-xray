@@ -42,6 +42,6 @@ EXPOSE 80
 EXPOSE 81
 
 HEALTHCHECK  --interval=15m \
-    --start-interval=30s \
-    --start-period=30s \
+    --start-period=1m \
+    --start-interval=10s \
     CMD nc -z localhost 80 && curl -f http://localhost:81/ || exit 1
